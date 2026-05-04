@@ -41,14 +41,14 @@ def main():
 
     if confirm(default=True):
         release = github_client.rest.repos.create_release(
-            owner=ipa_archive_repo.split("/")[0],
-            repo=ipa_archive_repo.split("/")[1],
+            owner=ipa_archive_repo.owner,
+            repo=ipa_archive_repo.repo,
             tag_name=release_tag,
         )
         with open(ipa_path, "rb") as f:
             asset = github_client.rest.repos.upload_release_asset(
-                owner=ipa_archive_repo.split("/")[0],
-                repo=ipa_archive_repo.split("/")[1],
+                owner=ipa_archive_repo.owner,
+                repo=ipa_archive_repo.repo,
                 release_id=release.parsed_data.id,
                 name=f"{release_tag}.ipa",
                 data=f.read(),

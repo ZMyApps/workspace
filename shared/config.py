@@ -3,6 +3,8 @@ import tomllib
 from pathlib import Path
 from pprint import pprint
 
+from shared.github import GitHubRepo
+
 BASE_DIR = Path(__file__).parent
 CONFIG_PATH = BASE_DIR.parent / "config.toml"
 _config_data = {}
@@ -17,9 +19,9 @@ except tomllib.TOMLDecodeError as e:
     print(f"Error parsing TOML in '{CONFIG_PATH}': {e}")
     sys.exit(1)
 
-build_archive_repo = _config_data["build_archive_repo"]
-ipa_archive_repo = _config_data["ipa_archive_repo"]
-tweak_archive_repo = _config_data["tweak_archive_repo"]
+build_archive_repo = GitHubRepo(_config_data["build_archive_repo"])
+ipa_archive_repo = GitHubRepo(_config_data["ipa_archive_repo"])
+tweak_archive_repo = GitHubRepo(_config_data["tweak_archive_repo"])
 
 
 def get_app_config(name=None, bundle_identifier=None):
