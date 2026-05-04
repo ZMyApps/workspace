@@ -3,6 +3,7 @@ import json
 from debian.debian_support import Version
 
 from shared.config import get_app_config, ipa_archive_repo
+from shared.env import worker_base_url, worker_base_url_with_auth
 from shared.github import GitHubRepo, github_client
 
 
@@ -38,7 +39,7 @@ def generate_decrypted():
                 "bundleIdentifier": app_config["bundle_identifier"],
                 "version": app_version,
                 "localizedDescription": asset.name,
-                "downloadURL": f"{worker_base_url}/download/{ipa_archive_repo.owner}/{ipa_archive_repo.repo}/{asset.id}/{asset.name}",
+                "downloadURL": f"{worker_base_url_with_auth}/download/{ipa_archive_repo.owner}/{ipa_archive_repo.repo}/{asset.id}/{asset.name}",
                 "iconURL": f"{worker_base_url}/icon/{app_name}.jpg",
                 "versionDate": asset.created_at.isoformat(),
                 "size": asset.size,
