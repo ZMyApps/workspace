@@ -2,22 +2,24 @@ import os
 import subprocess
 
 from githubkit import GitHub
-from githubkit.auth import TokenAuthStrategy
+from githubkit.auth import ActionAuthStrategy, TokenAuthStrategy
 
 USERNAME = "gx8z"
 
-_token = os.environ.get("GH_TOKEN")
 
-if not _token:
-    token_cmd = subprocess.run(
-        ["gh", "auth", "token", "--user", USERNAME],
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-    _token = token_cmd.stdout.strip()
+def get_github_client():
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        _github = GitHub(ActionAuthStrategy())
+    else:
+        token_cmd = subprocess.run(
+            ["gh", "auth", "token", "--user", USERNAME],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        token = token_cmd.stdout.strip()
+        _github = GitHub(TokenAuthStrategy(token))
+    return _github
 
-if not _token:
-    raise Exception("No token")
 
-github_client = GitHub(TokenAuthStrategy(_token))
+github_client = get_github_client()
