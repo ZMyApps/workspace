@@ -2,7 +2,7 @@ import json
 
 from debian.debian_support import Version
 
-from shared.config import get_app_config, ipa_archive_repo, worker_base_url
+from shared.config import get_app_config, ipa_archive_repo
 from shared.github import GitHubRepo, github_client
 
 
