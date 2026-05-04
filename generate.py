@@ -39,7 +39,7 @@ def generate_decrypted():
                 "version": app_version,
                 "localizedDescription": asset.name,
                 "downloadURL": f"{worker_base_url}/download/{ipa_archive_repo.owner}/{ipa_archive_repo.repo}/{asset.id}/{asset.name}",
-                "iconURL": f"{worker_base_url}/icon/{app_name}.png",
+                "iconURL": f"{worker_base_url}/icon/{app_name}.jpg",
                 "versionDate": asset.created_at.isoformat(),
                 "size": asset.size,
             }
