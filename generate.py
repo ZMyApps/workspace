@@ -38,7 +38,7 @@ def generate_decrypted():
                 "bundleIdentifier": app_config["bundle_identifier"],
                 "version": app_version,
                 "localizedDescription": asset.name,
-                "downloadURL": f"{worker_base_url}/download/{asset.id}/{asset.name}",
+                "downloadURL": f"{worker_base_url}/download/{ipa_archive_repo.owner}/{ipa_archive_repo.repo}/{asset.id}/{asset.name}",
                 "iconURL": f"{worker_base_url}/icon/{app_name}",
                 "versionDate": asset.created_at.isoformat(),
                 "size": asset.size,
