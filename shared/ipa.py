@@ -14,6 +14,6 @@ def extract_ipa_metadata(ipa_path: str) -> dict:
         plist_data = zf.read(plist_paths[0])
     info = plistlib.loads(plist_data)
     return {
-        "bundleIdentifier": info["CFBundleIdentifier"],
+        "bundle_identifier": info["CFBundleIdentifier"],
         "version": info["CFBundleShortVersionString"],
     }
