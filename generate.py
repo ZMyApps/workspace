@@ -40,7 +40,7 @@ def generate_decrypted():
                 "localizedDescription": asset.name,
                 "downloadURL": f"{worker_base_url}/download/{asset.id}/{asset.name}",
                 "iconURL": f"{worker_base_url}/icon/{app_name}",
-                "versionDate": asset.created_at,
+                "versionDate": asset.created_at.isoformat(),
                 "size": asset.size,
             }
             decrypted.append(current_app_json)
