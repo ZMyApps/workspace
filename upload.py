@@ -1,8 +1,5 @@
 import argparse
-import shutil
-import subprocess
 import sys
-import tempfile
 from pathlib import Path
 
 from shared.config import get_app_config, ipa_archive_repo
@@ -39,28 +36,25 @@ def main():
     if notes:
         release_tag = f"{app_config['name']}_{metadata['version']}_{notes}"
 
-    with github_client():
-        print("=======================")
-        print(f"\n  \033[95m{release_tag}.ipa\033[0m\n")
+    print("=======================")
+    print(f"\n  \033[95m{release_tag}.ipa\033[0m\n")
 
-        if confirm(default=True):
-            with tempfile.TemporaryDirectory() as tmp_dir:
-                renamed_file = Path(tmp_dir) / f"${release_tag}.ipa"
-                shutil.copy2(ipa_path, renamed_file)
-                subprocess.run(
-                    [
-                        "gh",
-                        "release",
-                        "--repo",
-                        ipa_archive_repo,
-                        "create",
-                        release_tag,
-                        renamed_file,
-                        "--notes",
-                        "",
-                    ]
-                )
-        print("=======================")
+    if confirm(default=True):
+        release = github_client.rest.repos.create_release(
+            owner=ipa_archive_repo.split("/")[0],
+            repo=ipa_archive_repo.split("/")[1],
+            tag_name=release_tag,
+        )
+        with open(ipa_path, "rb") as f:
+            asset = github_client.rest.repos.upload_release_asset(
+                owner=ipa_archive_repo.split("/")[0],
+                repo=ipa_archive_repo.split("/")[1],
+                release_id=release.parsed_data.id,
+                name=f"{release_tag}.ipa",
+                data=f.read(),
+            )
+            print("Uploaded", asset.parsed_data.browser_download_url)
+    print("=======================")
 
 
 if __name__ == "__main__":
