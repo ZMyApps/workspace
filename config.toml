@@ -1,0 +1,30 @@
+build_archive_repo = "ZMyApps/build-archive"
+ipa_archive_repo = "ZMyApps/ipa-archive"
+tweak_archive_repo = "ZMyApps/tweak-archive"
+
+[apps.Apollo]
+bundle_identifier = "com.christianselig.Apollo"
+
+[apps.Facebook]
+bundle_identifier = "com.facebook.Facebook"
+
+[apps.Infuse]
+bundle_identifier = "com.firecore.infuse"
+
+[apps.Instagram]
+bundle_identifier = "com.burbn.instagram"
+
+[apps.TikTok]
+bundle_identifier = "com.zhiliaoapp.musically"
+
+# [apps.TikTokGlobal]
+# bundle_identifier = "com.ss.iphone.ugc.Ame"
+
+[apps.X]
+bundle_identifier = "com.atebits.Tweetie2"
+
+[apps.YouTube]
+bundle_identifier = "com.google.ios.youtube"
+
+[apps.YouTubeMusic]
+bundle_identifier = "com.google.ios.youtubemusic"
