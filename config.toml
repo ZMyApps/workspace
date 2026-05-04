@@ -2,6 +2,8 @@ build_archive_repo = "ZMyApps/build-archive"
 ipa_archive_repo = "ZMyApps/ipa-archive"
 tweak_archive_repo = "ZMyApps/tweak-archive"
 
+worker_base_url = "https://example.com"
+
 [apps.Apollo]
 bundle_identifier = "com.christianselig.Apollo"
 
