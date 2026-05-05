@@ -46,6 +46,7 @@ class GitHubRepo:
         latest: Literal[True],
         tag: None = None,
         asset_name_includes: str | None = None,
+        asset_name_endswith: str | None = None,
     ) -> str: ...
 
     @overload
@@ -54,6 +55,7 @@ class GitHubRepo:
         latest: Literal[False] | None = None,
         tag: str = ...,
         asset_name_includes: str | None = None,
+        asset_name_endswith: str | None = None,
     ) -> str: ...
 
     def get_release_asset_url(
@@ -61,6 +63,7 @@ class GitHubRepo:
         latest: bool | None = False,
         tag: str | None = None,
         asset_name_includes: str | None = None,
+        asset_name_endswith: str | None = None,
     ) -> str:
         release = None
         if latest:
@@ -77,6 +80,10 @@ class GitHubRepo:
             if asset_name_includes:
                 for asset in assets:
                     if asset_name_includes in asset.name:
+                        return asset.browser_download_url
+            if asset_name_endswith:
+                for asset in assets:
+                    if asset.name.endswith(asset_name_endswith):
                         return asset.browser_download_url
             return assets[0].browser_download_url
         else:
