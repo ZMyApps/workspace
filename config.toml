@@ -48,19 +48,19 @@ bundle_identifier = "com.google.ios.youtube"
 name = "YouMod"
 app_name = "YouTube"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "github_release_latest"
 repo = "Tonwalter888/YouMod"
 endswith = "arm64.deb"
 use_version = true
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "cydia_repo_latest"
 repo = "https://poomsmart.github.io/repo"
 package = "com.ps.ytvideooverlay"
 architecture = "iphoneos-arm64"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "cydia_repo_latest"
 repo = "https://poomsmart.github.io/repo"
 package = "com.ps.youpip"
@@ -70,37 +70,37 @@ architecture = "iphoneos-arm64"
 name = "ZMyYoutube"
 app_name = "YouTube"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "cydia_repo_latest"
 repo = "https://poomsmart.github.io/repo"
 package = "com.ps.ytabgoodies"
 architecture = "iphoneos-arm64"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "cydia_repo_latest"
 repo = "https://poomsmart.github.io/repo"
 package = "com.ps.ytx"
 architecture = "iphoneos-arm64"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "cydia_repo_latest"
 repo = "https://poomsmart.github.io/repo"
 package = "com.ps.ytvideooverlay"
 architecture = "iphoneos-arm64"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "cydia_repo_latest"
 repo = "https://poomsmart.github.io/repo"
 package = "com.ps.youpip"
 architecture = "iphoneos-arm64"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "github_release_version"
 repo = "hbang/Alderis"
 version = "1.2.3"
 endswith = "arm64.deb"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "cydia_repo_latest"
 repo = "https://repo.icrazeios.com"
 package = "com.galacticdev.isponsorblock"
