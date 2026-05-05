@@ -46,5 +46,16 @@ def get_app_config(name=None, bundle_identifier=None):
         return current_config
 
 
+def get_tweak_config(name):
+    current_config = next(
+        (config for config in _config_data["tweaks"] if config["name"] == name), None
+    )
+    if current_config is None:
+        print("get_tweak_config", "name", name, "None")
+    else:
+        current_config["app"] = get_app_config(name=current_config["app_name"])
+    return current_config
+
+
 if __name__ == "__main__":
     pprint(_config_data)
