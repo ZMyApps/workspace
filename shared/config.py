@@ -26,20 +26,24 @@ tweak_archive_repo = GitHubRepo(_config_data["tweak_archive_repo"])
 
 def get_app_config(name=None, bundle_identifier=None):
     if name:
-        if name not in _config_data["apps"]:
-            print("[get_app_config(name=)]", name, "not found")
-            return None
-        current_config = _config_data["apps"][name]
-        current_config["name"] = name
+        current_config = next(
+            (config for config in _config_data["apps"] if config["name"] == name), None
+        )
+        if current_config is None:
+            print("get_app_config", "name", name, "None")
         return current_config
     elif bundle_identifier:
-        for app_name in _config_data["apps"]:
-            current_config = _config_data["apps"][app_name]
-            if bundle_identifier == current_config["bundle_identifier"]:
-                current_config["name"] = app_name
-                return current_config
-        print("[get_app_config(bundleIdentifier=)]", name, "not found")
-        return None
+        current_config = next(
+            (
+                config
+                for config in _config_data["apps"]
+                if config["bundle_identifier"] == bundle_identifier
+            ),
+            None,
+        )
+        if current_config is None:
+            print("get_app_config", "bundle_identifier", bundle_identifier, "None")
+        return current_config
 
 
 if __name__ == "__main__":
