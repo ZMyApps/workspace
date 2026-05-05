@@ -6,6 +6,16 @@ tweak_archive_repo = "ZMyApps/tweak-archive"
 name = "Apollo"
 bundle_identifier = "com.christianselig.Apollo"
 
+[[tweaks]]
+name = "ApolloICA"
+app_name = "Apollo"
+
+[[tweaks.debs]]
+method = "github_release_latest"
+repo = "JeffreyCA/Apollo-ImprovedCustomApi"
+endswith = "rootless.deb"
+use_version = true
+
 [[apps]]
 name = "Facebook"
 bundle_identifier = "com.facebook.Facebook"
@@ -33,6 +43,68 @@ bundle_identifier = "com.atebits.Tweetie2"
 [[apps]]
 name = "YouTube"
 bundle_identifier = "com.google.ios.youtube"
+
+[[tweaks]]
+name = "YouMod"
+app_name = "YouTube"
+
+[[tweaks.deb]]
+method = "github_release_latest"
+repo = "Tonwalter888/YouMod"
+endswith = "arm64.deb"
+use_version = true
+
+[[tweaks.deb]]
+method = "cydia_repo_latest"
+repo = "https://poomsmart.github.io/repo"
+package = "com.ps.ytvideooverlay"
+architecture = "iphoneos-arm64"
+
+[[tweaks.deb]]
+method = "cydia_repo_latest"
+repo = "https://poomsmart.github.io/repo"
+package = "com.ps.youpip"
+architecture = "iphoneos-arm64"
+
+[[tweaks]]
+name = "ZMyYoutube"
+app_name = "YouTube"
+
+[[tweaks.deb]]
+method = "cydia_repo_latest"
+repo = "https://poomsmart.github.io/repo"
+package = "com.ps.ytabgoodies"
+architecture = "iphoneos-arm64"
+
+[[tweaks.deb]]
+method = "cydia_repo_latest"
+repo = "https://poomsmart.github.io/repo"
+package = "com.ps.ytx"
+architecture = "iphoneos-arm64"
+
+[[tweaks.deb]]
+method = "cydia_repo_latest"
+repo = "https://poomsmart.github.io/repo"
+package = "com.ps.ytvideooverlay"
+architecture = "iphoneos-arm64"
+
+[[tweaks.deb]]
+method = "cydia_repo_latest"
+repo = "https://poomsmart.github.io/repo"
+package = "com.ps.youpip"
+architecture = "iphoneos-arm64"
+
+[[tweaks.deb]]
+method = "github_release_version"
+repo = "hbang/Alderis"
+version = "1.2.3"
+endswith = "arm64.deb"
+
+[[tweaks.deb]]
+method = "cydia_repo_latest"
+repo = "https://repo.icrazeios.com"
+package = "com.galacticdev.isponsorblock"
+architecture = "iphoneos-arm64"
 
 [[apps]]
 name = "YouTubeMusic"
