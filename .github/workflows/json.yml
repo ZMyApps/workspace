@@ -26,10 +26,13 @@ jobs:
         uses: pnpm/action-setup@v6
         with:
           version: latest
-          # cache: true
-          run_install: |
-            - args: [--prod]
-              cwd: ./worker
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install dependencies
+        working-directory: ./worker
+        run: pnpm install --prod
       - name: Build & Deploy Worker
         uses: cloudflare/wrangler-action@v3
         with:
