@@ -41,30 +41,30 @@ class GitHubRepo:
             self.repo = repo
 
     @overload
-    def get_release_asset_url(
+    def get_release_asset(
         self,
         latest: Literal[True],
         tag: None = None,
         asset_name_includes: str | None = None,
         asset_name_endswith: str | None = None,
-    ) -> str: ...
+    ): ...
 
     @overload
-    def get_release_asset_url(
+    def get_release_asset(
         self,
         latest: Literal[False] | None = None,
         tag: str = ...,
         asset_name_includes: str | None = None,
         asset_name_endswith: str | None = None,
-    ) -> str: ...
+    ): ...
 
-    def get_release_asset_url(
+    def get_release_asset(
         self,
         latest: bool | None = False,
         tag: str | None = None,
         asset_name_includes: str | None = None,
         asset_name_endswith: str | None = None,
-    ) -> str:
+    ):
         release = None
         if latest:
             release = github_client.rest.repos.get_latest_release(
@@ -77,14 +77,15 @@ class GitHubRepo:
 
         if release:
             assets = release.parsed_data.assets
+            tag_name = release.parsed_data.tag_name.removeprefix("v")
             if asset_name_includes:
                 for asset in assets:
                     if asset_name_includes in asset.name:
-                        return asset.browser_download_url
+                        return {"url": asset.browser_download_url, "tag": tag_name}
             if asset_name_endswith:
                 for asset in assets:
                     if asset.name.endswith(asset_name_endswith):
-                        return asset.browser_download_url
-            return assets[0].browser_download_url
+                        return {"url": asset.browser_download_url, "tag": tag_name}
+            return {"url": assets[0].browser_download_url, "tag": tag_name}
         else:
             raise Exception("No release found")
