@@ -67,7 +67,7 @@ package = "com.ps.youpip"
 architecture = "iphoneos-arm64"
 
 [[tweaks]]
-name = "ZMyYoutube"
+name = "ZMyYouTube"
 app_name = "YouTube"
 
 [[tweaks.debs]]
