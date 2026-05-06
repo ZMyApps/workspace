@@ -128,6 +128,29 @@ def main():
             cwd=tmpdirname,
         )
 
+        # Custom: ApolloICA Liquid Glass Patching
+        if args.tweak_name == "ApolloICA":
+            apolloica_patch_script_path = download_file(
+                url="https://raw.githubusercontent.com/JeffreyCA/Apollo-ImprovedCustomApi/refs/heads/main/patch.sh",
+                folder_path=tmpdirname,
+            )
+            subprocess.run(
+                [
+                    "bash",
+                    apolloica_patch_script_path,
+                    injected_path,
+                    "--output",
+                    "apollo_ica_patched.ipa",
+                    "--liquid-glass",
+                ],
+                check=True,
+                cwd=tmpdirname,
+            )
+            os.replace(
+                os.path.join(tmpdirname, "apollo_ica_patched.ipa"), injected_path
+            )
+            note = "LiquidGlass"
+
         # Upload
         if note:
             release_tag = f"{tweak_config['app_name']}_{ipa_metadata['version']}_{tweak_config['name']}_{tweak_use_version}_{note}"
