@@ -9,7 +9,13 @@ on:
         type: choice
         options:
           - ApolloICA
+          - BHTwitter
+          - FacebookGlow
+          - InfusePlus
+          - RyukGram
+          - SCInsta
           - YouMod
+          - YTMusicUltimate
           - ZMyYouTube
       app_version:
         description: app_version
