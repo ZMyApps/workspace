@@ -41,3 +41,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy --minify
           workingDirectory: worker
+          wranglerVersion: latest
