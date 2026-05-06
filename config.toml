@@ -27,7 +27,7 @@ bundle_identifier = "com.facebook.Facebook"
 name = "FacebookGlow"
 app_name = "Facebook"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "github_release_latest"
 repo = "dayanch96/Glow"
 endswith = "arm64.deb"
@@ -43,7 +43,7 @@ bundle_identifier = "com.firecore.infuse"
 name = "InfusePlus"
 app_name = "Infuse"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "github_release_latest"
 repo = "dayanch96/InfusePlus"
 endswith = "arm64.deb"
@@ -59,7 +59,7 @@ bundle_identifier = "com.burbn.instagram"
 name = "SCInsta"
 app_name = "Instagram"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "github_release_latest"
 repo = "SoCuul/SCInsta"
 endswith = "rootless.deb"
@@ -69,7 +69,7 @@ use_version = true
 name = "RyukGram"
 app_name = "Instagram"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "github_release_latest"
 repo = "faroukbmiled/RyukGram"
 endswith = "rootless.deb"
@@ -95,7 +95,7 @@ bundle_identifier = "com.atebits.Tweetie2"
 name = "BHTwitter"
 app_name = "X"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "github_release_latest"
 repo = "BandarHL/BHTwitter"
 endswith = "arm64.deb"
@@ -179,7 +179,7 @@ bundle_identifier = "com.google.ios.youtubemusic"
 name = "YTMusicUltimate"
 app_name = "YouTubeMusic"
 
-[[tweaks.deb]]
+[[tweaks.debs]]
 method = "github_release_latest"
 repo = "dayanch96/YTMusicUltimate"
 endswith = "arm64.deb"
