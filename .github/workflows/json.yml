@@ -30,6 +30,7 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
+          cache-dependency-path: ./worker
       - name: Install dependencies
         working-directory: ./worker
         run: pnpm install --prod
