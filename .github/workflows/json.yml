@@ -1,0 +1,38 @@
+name: Generate JSON and Deploy
+on:
+  workflow_dispatch:
+  workflow_call:
+jobs:
+  generate-and-deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: "generate-and-deploy-limiter"
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+      - name: Generate json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_ACTION_TOKEN }}
+          WORKER_DOMAIN: ${{ secrets.WORKER_DOMAIN }}
+          WORKER_USERNAME: ${{ secrets.WORKER_USERNAME }}
+          WORKER_PASSWORD: ${{ secrets.WORKER_PASSWORD }}
+        run: |
+          uv run generate.py
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          cache: true
+          run_install: |
+            - args: [--prod]
+              cwd: ./worker
+      - name: Build & Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --minify
+          workingDirectory: worker

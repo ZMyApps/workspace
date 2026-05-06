@@ -1,0 +1,45 @@
+name: Tweak App
+run-name: ${{ inputs.tweak_name }} ${{ inputs.app_version }}
+on:
+  workflow_dispatch:
+    inputs:
+      tweak_name:
+        description: tweak_name
+        required: true
+        type: choice
+        options:
+          - ApolloICA
+          - YouMod
+          - ZMyYouTube
+      app_version:
+        description: app_version
+        required: true
+        type: string
+        default: latest
+env:
+  CYAN_SHA: 740d3716dcd98c20c000f12cdb88f1f0b2a533a4
+jobs:
+  tweak_app:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-suffix: cyan-${{ env.CYAN_SHA }}
+      - name: Install cyan
+        run: |
+          uv tool install git+https://github.com/asdfzxcvbn/pyzule-rw@${{ env.CYAN_SHA }}
+      - name: Tweak
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_ACTION_TOKEN }}
+          WORKER_DOMAIN: ${{ secrets.WORKER_DOMAIN }}
+          WORKER_USERNAME: ${{ secrets.WORKER_USERNAME }}
+          WORKER_PASSWORD: ${{ secrets.WORKER_PASSWORD }}
+        run: |
+          uv run tweak.py ${{ inputs.tweak_name }} --app-version ${{ inputs.app_version }}
+  json:
+    needs: tweak_app
+    uses: ./.github/workflows/json.yml
+    secrets: inherit
