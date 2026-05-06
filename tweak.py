@@ -152,6 +152,10 @@ def main():
             note = "LiquidGlass"
 
         # Upload
+        github_run_number = os.getenv("GITHUB_RUN_NUMBER")
+        if not tweak_use_version and github_run_number:
+            tweak_use_version = github_run_number
+
         if note:
             release_tag = f"{tweak_config['app_name']}_{ipa_metadata['version']}_{tweak_config['name']}_{tweak_use_version}_{note}"
         else:
