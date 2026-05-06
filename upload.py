@@ -6,6 +6,7 @@ from githubkit.versions.latest.models import ReleaseAsset
 
 from shared.config import get_app_config, ipa_archive_repo
 from shared.confirm import confirm
+from shared.dispatch import dispatch_json
 from shared.github import github_client
 from shared.ipa import extract_ipa_metadata
 
@@ -59,6 +60,8 @@ def main():
             )
 
             print("Uploaded")
+        dispatch_json()
+        print("Dispatched")
     print("=======================")
 
 
