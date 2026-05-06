@@ -19,6 +19,7 @@ except tomllib.TOMLDecodeError as e:
     print(f"Error parsing TOML in '{CONFIG_PATH}': {e}")
     sys.exit(1)
 
+workspace_repo = GitHubRepo(_config_data["workspace_repo"])
 build_archive_repo = GitHubRepo(_config_data["build_archive_repo"])
 ipa_archive_repo = GitHubRepo(_config_data["ipa_archive_repo"])
 tweak_archive_repo = GitHubRepo(_config_data["tweak_archive_repo"])

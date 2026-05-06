@@ -1,3 +1,4 @@
+workspace_repo = "ZMyApps/workspace"
 build_archive_repo = "ZMyApps/build-archive"
 ipa_archive_repo = "ZMyApps/ipa-archive"
 tweak_archive_repo = "ZMyApps/tweak-archive"
