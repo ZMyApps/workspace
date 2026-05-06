@@ -37,6 +37,9 @@ jobs:
       - name: Install cyan
         run: |
           uv tool install git+https://github.com/asdfzxcvbn/pyzule-rw@${{ env.CYAN_SHA }}
+      - name: uv sync
+        run: |
+          uv sync --locked
       - name: Tweak
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
