@@ -51,3 +51,5 @@ decrypted_repo = SideloadRepo(f"{worker_base_url_with_auth}/decrypted.json")
 decrypted_latest_repo = SideloadRepo(
     f"{worker_base_url_with_auth}/decryptedlatest.json"
 )
+tweaked_repo = SideloadRepo(f"{worker_base_url_with_auth}/tweaked.json")
+tweaked_latest_repo = SideloadRepo(f"{worker_base_url_with_auth}/tweakedlatest.json")
