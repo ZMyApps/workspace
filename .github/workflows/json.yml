@@ -1,4 +1,4 @@
-name: Generate JSON and Deploy
+name: 02. Generate JSON and Deploy
 on:
   workflow_dispatch:
   workflow_call:
