@@ -16,17 +16,65 @@ repo = "JeffreyCA/Apollo-ImprovedCustomApi"
 endswith = "rootless.deb"
 use_version = true
 
+#####################################################
+
 [[apps]]
 name = "Facebook"
 bundle_identifier = "com.facebook.Facebook"
+
+[[tweaks]]
+name = "FacebookGlow"
+app_name = "Facebook"
+
+[[tweaks.deb]]
+method = "github_release_latest"
+repo = "dayanch96/Glow"
+endswith = "arm64.deb"
+use_version = true
+
+#####################################################
 
 [[apps]]
 name = "Infuse"
 bundle_identifier = "com.firecore.infuse"
 
+[[tweaks]]
+name = "InfusePlus"
+app_name = "Infuse"
+
+[[tweaks.deb]]
+method = "github_release_latest"
+repo = "dayanch96/InfusePlus"
+endswith = "arm64.deb"
+use_version = true
+
+#####################################################
+
 [[apps]]
 name = "Instagram"
 bundle_identifier = "com.burbn.instagram"
+
+[[tweaks]]
+name = "SCInsta"
+app_name = "Instagram"
+
+[[tweaks.deb]]
+method = "github_release_latest"
+repo = "SoCuul/SCInsta"
+endswith = "rootless.deb"
+use_version = true
+
+[[tweaks]]
+name = "RyukGram"
+app_name = "Instagram"
+
+[[tweaks.deb]]
+method = "github_release_latest"
+repo = "faroukbmiled/RyukGram"
+endswith = "rootless.deb"
+use_version = true
+
+#####################################################
 
 [[apps]]
 name = "TikTok"
@@ -36,9 +84,23 @@ bundle_identifier = "com.zhiliaoapp.musically"
 # name = "TikTokGlobal"
 # bundle_identifier = "com.ss.iphone.ugc.Ame"
 
+#####################################################
+
 [[apps]]
 name = "X"
 bundle_identifier = "com.atebits.Tweetie2"
+
+[[tweaks]]
+name = "BHTwitter"
+app_name = "X"
+
+[[tweaks.deb]]
+method = "github_release_latest"
+repo = "BandarHL/BHTwitter"
+endswith = "arm64.deb"
+use_version = true
+
+#####################################################
 
 [[apps]]
 name = "YouTube"
@@ -106,6 +168,18 @@ repo = "https://repo.icrazeios.com"
 package = "com.galacticdev.isponsorblock"
 architecture = "iphoneos-arm64"
 
+#####################################################
+
 [[apps]]
 name = "YouTubeMusic"
 bundle_identifier = "com.google.ios.youtubemusic"
+
+[[tweaks]]
+name = "YTMusicUltimate"
+app_name = "YouTubeMusic"
+
+[[tweaks.deb]]
+method = "github_release_latest"
+repo = "dayanch96/YTMusicUltimate"
+endswith = "arm64.deb"
+use_version = true
