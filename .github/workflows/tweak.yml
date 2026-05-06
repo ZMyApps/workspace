@@ -33,7 +33,7 @@ jobs:
           uv tool install git+https://github.com/asdfzxcvbn/pyzule-rw@${{ env.CYAN_SHA }}
       - name: Tweak
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_ACTION_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
           WORKER_DOMAIN: ${{ secrets.WORKER_DOMAIN }}
           WORKER_USERNAME: ${{ secrets.WORKER_USERNAME }}
           WORKER_PASSWORD: ${{ secrets.WORKER_PASSWORD }}
