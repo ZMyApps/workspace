@@ -2,6 +2,8 @@ import argparse
 import sys
 from pathlib import Path
 
+from githubkit.versions.latest.models import ReleaseAsset
+
 from shared.config import get_app_config, ipa_archive_repo
 from shared.confirm import confirm
 from shared.github import github_client
@@ -46,14 +48,17 @@ def main():
             tag_name=release_tag,
         )
         with open(ipa_path, "rb") as f:
-            asset = github_client.rest.repos.upload_release_asset(
-                owner=ipa_archive_repo.owner,
-                repo=ipa_archive_repo.repo,
-                release_id=release.parsed_data.id,
-                name=f"{release_tag}.ipa",
-                data=f.read(),
+            file_name = f"{release_tag}.ipa"
+            github_client.request(
+                "POST",
+                release.parsed_data.upload_url.split("{?")[0],
+                params={"name": file_name},
+                content=f.read(),
+                headers={"Content-Type": "application/octet-stream"},
+                response_model=ReleaseAsset,
             )
-            print("Uploaded", asset.parsed_data.browser_download_url)
+
+            print("Uploaded")
     print("=======================")
 
 
