@@ -1,7 +1,15 @@
 import { Hono } from "hono";
 import { basicAuth } from "hono/basic-auth";
-import decryptedJson from "../../generated/decrypted.json" with { type: "json" };
-import decryptedLatestJson from "../../generated/decryptedlatest.json" with { type: "json" };
+import decryptedJson from "../../generated/decrypted.json" with {
+  type: "json",
+};
+import decryptedLatestJson from "../../generated/decryptedlatest.json" with {
+  type: "json",
+};
+import tweakedJson from "../../generated/tweaked.json" with { type: "json" };
+import tweakedLatestJson from "../../generated/tweakedlatest.json" with {
+  type: "json",
+};
 
 const app = new Hono<{ Bindings: CloudflareBindings }>();
 
@@ -22,6 +30,14 @@ app.use(
     return await auth(c, next);
   },
 );
+
+app.get("/tweaked.json", (c) => {
+  return c.json(tweakedJson);
+});
+
+app.get("/tweakedlatest.json", (c) => {
+  return c.json(tweakedLatestJson);
+});
 
 app.get("/decrypted.json", (c) => {
   return c.json(decryptedJson);
