@@ -30,7 +30,7 @@ class SideloadRepo:
         if filtered_list:
             sorted_list = sorted(
                 filtered_list,
-                key=lambda p: debian_support.Version(p["version"]),
+                key=lambda p: debian_support.Version(p["version"].split("_")[0]),
             )
             return sorted_list[-1]
 
