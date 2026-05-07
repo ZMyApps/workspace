@@ -24,6 +24,8 @@ build_archive_repo = GitHubRepo(_config_data["build_archive_repo"])
 ipa_archive_repo = GitHubRepo(_config_data["ipa_archive_repo"])
 tweak_archive_repo = GitHubRepo(_config_data["tweak_archive_repo"])
 
+all_apps = _config_data["apps"]
+
 
 def get_app_config(name=None, bundle_identifier=None):
     if name:
