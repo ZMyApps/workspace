@@ -1,3 +1,5 @@
+#!/usr/bin/env -S uv run --env-file .env
+
 from time import time
 
 import requests

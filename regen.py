@@ -1,3 +1,5 @@
+#!/usr/bin/env -S uv run
+
 from shared.dispatch import dispatch_json
 
 
