@@ -4,6 +4,10 @@ from debian import debian_support
 from shared.env import worker_base_url_with_auth
 
 
+def parse_version(version: str):
+    return debian_support.Version(version.replace("_", ""))
+
+
 class SideloadRepo:
     def __init__(self, url: str):
         self.url = url
@@ -30,7 +34,7 @@ class SideloadRepo:
         if filtered_list:
             sorted_list = sorted(
                 filtered_list,
-                key=lambda p: debian_support.Version(p["version"].replace("_", "")),
+                key=lambda p: parse_version(p["version"]),
             )
             return sorted_list[-1]
 

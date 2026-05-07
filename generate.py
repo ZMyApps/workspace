@@ -5,6 +5,7 @@ from debian.debian_support import Version
 from shared.config import build_archive_repo, get_app_config, ipa_archive_repo
 from shared.env import worker_base_url, worker_base_url_with_auth
 from shared.github import GitHubRepo, github_client
+from shared.repo import parse_version
 
 
 def list_releases(github_repo: GitHubRepo):
@@ -110,7 +111,7 @@ def generate_tweaked():
             tweaked.append(current_app_json)
             if tweak_name in tweaked_latest:
                 current_latest_app_version: str = tweaked_latest[tweak_name]["version"]
-                if Version(current_latest_app_version) < Version(
+                if parse_version(current_latest_app_version) < parse_version(
                     current_app_json["version"]
                 ):
                     tweaked_latest[tweak_name] = current_app_json

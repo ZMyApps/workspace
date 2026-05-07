@@ -6,7 +6,7 @@ import requests
 from debian import debian_support
 
 from shared.config import all_apps
-from shared.repo import decrypted_latest_repo, tweaked_latest_repo
+from shared.repo import decrypted_latest_repo, parse_version, tweaked_latest_repo
 
 
 def lookup_appstore(bundle_identifier: str):
@@ -61,7 +61,7 @@ def main():
             tweaked_outdated = (
                 "✓"
                 if debian_support.Version(appstore_version)
-                > debian_support.Version(tweaked_version)
+                > parse_version(tweaked_version)
                 else ""
             )
 
