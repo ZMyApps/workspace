@@ -130,10 +130,18 @@ def main():
 
         # Custom: ApolloICA Liquid Glass Patching
         if args.tweak_name == "ApolloICA":
-            apolloica_patch_script_path = download_file(
-                url="https://raw.githubusercontent.com/JeffreyCA/Apollo-ImprovedCustomApi/refs/heads/main/patch.sh",
-                folder_path=tmpdirname,
+            apollo_repo_dir = os.path.join(tmpdirname, "Apollo-ImprovedCustomApi")
+            subprocess.run(
+                [
+                    "git",
+                    "clone",
+                    "--depth=1",
+                    "https://github.com/JeffreyCA/Apollo-ImprovedCustomApi.git",
+                    apollo_repo_dir,
+                ],
+                check=True,
             )
+            apolloica_patch_script_path = os.path.join(apollo_repo_dir, "patch.sh")
             subprocess.run(
                 [
                     "bash",
