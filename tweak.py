@@ -136,8 +136,6 @@ def main():
                     "git",
                     "clone",
                     "--depth=1",
-                    "--branch",
-                    "modified",
                     "https://github.com/ZMyApps/Apollo-ImprovedCustomApi.git",
                     apollo_repo_dir,
                 ],
